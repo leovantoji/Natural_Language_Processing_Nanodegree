@@ -1,2 +1,1 @@
-# NLP_nanodegree
-Udacity Natural Language Processing Nanodegree
+# Udacity Natural Language Processing Nanodegree
