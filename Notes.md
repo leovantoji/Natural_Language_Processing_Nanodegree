@@ -96,4 +96,7 @@
   - Noun (N): lamb
 - **Lookup tables** don't work very well with words having different tags.
 - [From Wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model). **Hidden Markov Model (HMM)** is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobservable (i.e. hidden) states.
+- `λ = (A,B)` specifies an HMM in terms of an **emission** probability distribution `A` and a **state transition** probability distribution `B`.
+  - The emission probabilities give the conditional probability of observing evidence values for each hidden state.
+  - The transition probabilities give the conditional probability of moving between states during the sequence. 
 - [From Wikipedia](https://en.wikipedia.org/wiki/Viterbi_algorithm). The **Viterbi algorithm** is a dynamic programming algorithm for finding the most likely sequence of hidden states—called the Viterbi path—that results in a sequence of observed events, especially in the context of Markov information sources and hidden Markov models (HMM). 
