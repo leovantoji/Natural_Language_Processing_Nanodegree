@@ -86,5 +86,14 @@
 ## Spam Classifer
 - The basic idea of **Bag of Words (BoW)** is to take a piece of text and count the frequency of words in that text. It is important to note that the BoW concept **treats each word individually** and the **order in which the words occur doesn't matter**.
 
-## Part of Speech Tagging with HMMs
-- 
+## Part of Speech Tagging with Hidden Markov Models
+- [From Wikipedia](https://en.wikipedia.org/wiki/Part-of-speech_tagging). In corpus linguistics, **part-of-speech-tagging (POS tagging)** is the process of marking up a word in a text (corpus) as corresponding to a particular part of speech, based on both its definition and its context - i.e., its relationship with adjacent and related words in a phrase, sentence, or paragraph. For example:
+  - Sentence: Mary has a little lamb.
+  - Noun (N): Mary
+  - Verb (V): has
+  - Determinant (Dt): a
+  - Adjective (Ad): little
+  - Noun (N): lamb
+- **Lookup tables** don't work very well with words having different tags.
+- [From Wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model). **Hidden Markov Model (HMM)** is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobservable (i.e. hidden) states.
+- [From Wikipedia](https://en.wikipedia.org/wiki/Viterbi_algorithm). The **Viterbi algorithm** is a dynamic programming algorithm for finding the most likely sequence of hidden states—called the Viterbi path—that results in a sequence of observed events, especially in the context of Markov information sources and hidden Markov models (HMM). 
