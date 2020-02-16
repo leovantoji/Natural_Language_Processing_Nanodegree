@@ -83,6 +83,8 @@
 - Summary:
   ![text_processing_summary](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/text_processing_summary.png)
 
-## Spam Classifier
+## Spam Classifer
 - The basic idea of **Bag of Words (BoW)** is to take a piece of text and count the frequency of words in that text. It is important to note that the BoW concept **treats each word individually** and the **order in which the words occur doesn't matter**.
+
+## Part of Speech Tagging with HMMs
 - 
