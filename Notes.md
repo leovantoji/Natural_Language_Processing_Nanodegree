@@ -94,6 +94,7 @@
   - Determinant (Dt): a
   - Adjective (Ad): little
   - Noun (N): lamb
+- Part-of-speech tagging is often used to help disambiguate natural language phrases because it can be done quickly with high accuracy. Tagging can be used for many NLP tasks like determining correct pronunciation during speech synthesis (for example, _dis_-count as a noun vs dis-_count_ as a verb), for information retrieval, and for word sense disambiguation.
 - **Lookup tables** don't work very well with words having different tags.
 - [From Wikipedia](https://en.wikipedia.org/wiki/Hidden_Markov_model). **Hidden Markov Model (HMM)** is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobservable (i.e. hidden) states.
 - `λ = (A,B)` specifies an HMM in terms of an **emission** probability distribution `A` and a **state transition** probability distribution `B`.
