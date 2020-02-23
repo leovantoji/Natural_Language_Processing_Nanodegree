@@ -101,3 +101,23 @@
   - The emission probabilities give the conditional probability of observing evidence values for each hidden state.
   - The transition probabilities give the conditional probability of moving between states during the sequence. 
 - [From Wikipedia](https://en.wikipedia.org/wiki/Viterbi_algorithm). The **Viterbi algorithm** is a dynamic programming algorithm for finding the most likely sequence of hidden states—called the Viterbi path—that results in a sequence of observed events, especially in the context of Markov information sources and hidden Markov models (HMM). 
+
+## Feature extraction and embeddings
+- A **document-term matrix** is a mathematical matrix that describes the frequency of terms that occur in a collection of documents. Each document is a row, and each term is a column.
+- **Count of common words** is a commonly used approach to match similar documents. Nonetheless, this approach has an **inherent flaw**. As the size of the document increases, the number of common words tend to increase even if the documents talk about different topics.
+- **Cosine similarity** is a measure of similarity between two non-zero vectors of aan inner product space that measures the cosine of the angle between them. This metric is used to measure how **similar the documents** are irrespective of their size. Further reading: [Machine Learning Plus](https://www.machinelearningplus.com/nlp/cosine-similarity/).
+  ![cosine_similarity_formula]()
+- **TF-IDF** (term frequency - inverse document frequency): *tfidf(t, d, D) = tf(t, d) x idf(t, D)*. TF-IDF is an innovative approach to assigning weights to words that signify their relevance in the document.
+  - Term frequency *tf(t,d)* is the ratio between the raw count of a term, *t*, in a document, *d*, divided by the total number of terms in *d*.
+  - Inverse document frequency *idf(t, D)* is the logarithm of the total number of documents in the collection, *D*, divided by the number of documents where *t* is present.
+- **Word embedding** is the collective name for a set of language modelling and feature learning techniques in natural language processing where words or phrases from the vocabulary are mapped to vectors of real numbers.
+- The core idea of **Word2Vec** is that a model, which is able to predict a given word given neighbouring words or vice versa, is likely to capture the contextual meanings of words very well.
+  - Neighbouring words: **Continuous Bag of Words**.
+  - Middle word: **Continuous Skip-gram**.
+- Properties of **Word2Vec**:
+  - Robust, distributed representation.
+  - Vector size independent of vocabulary.
+  - Train once, store in lookup table.
+  - Deep learning ready.
+- **GloVe** (Global vectors for word representation) is an approach that tries to **optimise the vector representation of each word** by using **co-occurence statistics**.
+- **t-SNE** (t-Distributed Stochastic Neighbouring Embedding) is a **dimensionality reduction technique** that can map high dimensional vectors to a lower dimensional space.
