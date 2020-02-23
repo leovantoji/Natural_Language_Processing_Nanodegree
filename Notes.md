@@ -105,9 +105,8 @@
 ## Feature extraction and embeddings
 - A **document-term matrix** is a mathematical matrix that describes the frequency of terms that occur in a collection of documents. Each document is a row, and each term is a column.
 - **Count of common words** is a commonly used approach to match similar documents. Nonetheless, this approach has an **inherent flaw**. As the size of the document increases, the number of common words tend to increase even if the documents talk about different topics.
-- **Cosine similarity** is a measure of similarity between two non-zero vectors of aan inner product space that measures the cosine of the angle between them. This metric is used to measure how **similar the documents** are irrespective of their size. 
-  - ![cosine_similarity_formula](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/Cosine-Similarity-Formula-1.png)
-  - Further reading: [Machine Learning Plus](https://www.machinelearningplus.com/nlp/cosine-similarity/).
+- **Cosine similarity** is a measure of similarity between two non-zero vectors of aan inner product space that measures the cosine of the angle between them. This metric is used to measure how **similar the documents** are irrespective of their size. [Machine Learning Plus](https://www.machinelearningplus.com/nlp/cosine-similarity/).
+![cosine_similarity_formula](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/Cosine-Similarity-Formula-1.png)
 - **TF-IDF** (term frequency - inverse document frequency): *tfidf(t, d, D) = tf(t, d) x idf(t, D)*. TF-IDF is an innovative approach to assigning weights to words that signify their relevance in the document.
   - Term frequency *tf(t,d)* is the ratio between the raw count of a term, *t*, in a document, *d*, divided by the total number of terms in *d*.
   - Inverse document frequency *idf(t, D)* is the logarithm of the total number of documents in the collection, *D*, divided by the number of documents where *t* is present.
