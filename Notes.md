@@ -125,7 +125,7 @@
 ## Topic Modelling
 - **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation** is an example of topic model and is used to classify text in a document to a particular topic.
 - In statistics, **latent variables** (hidden variables) are variables that are **not directly observed** but are rather **inferred from other observed variables**. 
-  - Model without latent variables have 500K parameters.
-  ![]()
-  - Model with latent variables have only 15K parameters.
-  ![]()
+  - *BoW model* without latent variables has 500K parameters.
+  ![Bag_of_Words](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/bag-of-words-quiz.png)
+  - *Latent variable model* has only 15K parameters.
+  ![Latent_variables](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/how-many-parameters-quiz.png)
