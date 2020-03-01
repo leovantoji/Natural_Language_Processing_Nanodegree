@@ -123,9 +123,16 @@
 - **t-SNE** (t-Distributed Stochastic Neighbouring Embedding) is a **dimensionality reduction technique** that can map high dimensional vectors to a lower dimensional space.
 
 ## Topic Modelling
-- **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation** is an example of topic model and is used to classify text in a document to a particular topic.
+- **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation (LDA)** is an example of topic model and is used to classify text in a document to a particular topic.
 - In statistics, **latent variables** (hidden variables) are variables that are **not directly observed** but are rather **inferred from other observed variables**. 
   - *BoW model* without latent variables has 500K parameters.
   ![Bag_of_Words](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/bag-of-words-quiz.png)
   - *Latent variable model* has only 15K parameters.
   ![Latent_variables](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/how-many-parameters-quiz.png)
+- An **LDA** model **factors the BoW** model into **2 matrices**:
+  - The first matrix indexes **documents by topic**.
+  - The other matrix indexes **topics by word**.
+- [From Wikipedia](https://en.wikipedia.org/wiki/Beta_distribution). In probability theory and statistics, the **beta distribution** is a family of continuous probability distributions defined on the interval *\[0, 1\]* parametrised by two **positive shape parametres**, denoted by *α* and *β*, that appear as exponents of the random variable and control the shape of the distribution. The **generalisation to multiple variables** is called a **Dirichlet distribution**. 
+  ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/dirichlet_distributions.png)
+  ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/lda.png)
+  ![Topic_model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/topic_model.png)
