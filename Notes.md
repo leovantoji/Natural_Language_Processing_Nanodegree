@@ -132,6 +132,10 @@
 - An **LDA** model **factors the BoW** model into **2 matrices**:
   - The first matrix indexes **documents by topic**.
   - The other matrix indexes **topics by word**.
+- LDA is used to classify text in a document to a particular topic. It builds a topic per document model and words per topic model, modelled as Dirichlet distributions.
+  - Each document is modelled as a multinomial distribution of topics and each topic is modelled as a multinomial distribution of words.
+  - LDA assumes that the every chunk of text we feed into it will contain words that are somehow related. Therefore choosing the right corpus of data is crucial.
+  - It also assumes documents are produced from a mixture of topics. Those topics then generate words based on their probability distribution.
 - [From Wikipedia](https://en.wikipedia.org/wiki/Beta_distribution). In probability theory and statistics, the **beta distribution** is a family of continuous probability distributions defined on the interval *\[0, 1\]* parametrised by two **positive shape parametres**, denoted by *α* and *β*, that appear as exponents of the random variable and control the shape of the distribution. The **generalisation to multiple variables** is called a **Dirichlet distribution**. 
   ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/dirichlet_distributions.png)
   ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/lda.png)
