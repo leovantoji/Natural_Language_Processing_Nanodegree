@@ -81,7 +81,7 @@
   lemmed = [WordNetLemmatizer().lemmatize(w, pos='v') for w in lemmed]
   ```
 - Summary:
-  ![text_processing_summary](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/text_processing_summary.png)
+  ![text_processing_summary](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/text_processing_summary.png)
 
 ## Spam Classifer
 - The basic idea of **Bag of Words (BoW)** is to take a piece of text and count the frequency of words in that text. It is important to note that the BoW concept **treats each word individually** and the **order in which the words occur doesn't matter**.
@@ -106,7 +106,7 @@
 - A **document-term matrix** is a mathematical matrix that describes the frequency of terms that occur in a collection of documents. Each document is a row, and each term is a column.
 - **Count of common words** is a commonly used approach to match similar documents. Nonetheless, this approach has an **inherent flaw**. As the size of the document increases, the number of common words tend to increase even if the documents talk about different topics.
 - **Cosine similarity** is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them. This metric is used to measure how **similar the documents** are irrespective of their size. [Machine Learning Plus](https://www.machinelearningplus.com/nlp/cosine-similarity/).
-![cosine_similarity_formula](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/Cosine-Similarity-Formula-1.png)
+![cosine_similarity_formula](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/Cosine-Similarity-Formula-1.png)
 - **TF-IDF** (term frequency - inverse document frequency): *tfidf(t, d, D) = tf(t, d) x idf(t, D)*. TF-IDF is an innovative approach to assigning weights to words that signify their relevance in the document.
   - Term frequency *tf(t,d)* is the ratio between the raw count of a term, *t*, in a document, *d*, divided by the total number of terms in *d*.
   - Inverse document frequency *idf(t, D)* is the logarithm of the total number of documents in the collection, *D*, divided by the number of documents where *t* is present.
@@ -126,13 +126,13 @@
 - **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation (LDA)** is an example of topic model and is used to classify text in a document to a particular topic.
 - In statistics, **latent variables** (hidden variables) are variables that are **not directly observed** but are rather **inferred from other observed variables**. 
   - *BoW model* without latent variables has 500K parameters.
-  ![Bag_of_Words](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/bag-of-words-quiz.png)
+  ![Bag_of_Words](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/bag-of-words-quiz.png)
   - *Latent variable model* has only 15K parameters.
-  ![Latent_variables](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/how-many-parameters-quiz.png)
+  ![Latent_variables](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/how-many-parameters-quiz.png)
 - An **LDA** model **factors the BoW** model into **2 matrices**:
   - The first matrix indexes **documents by topic**.
   - The other matrix indexes **topics by word**.
 - [From Wikipedia](https://en.wikipedia.org/wiki/Beta_distribution). In probability theory and statistics, the **beta distribution** is a family of continuous probability distributions defined on the interval *\[0, 1\]* parametrised by two **positive shape parametres**, denoted by *α* and *β*, that appear as exponents of the random variable and control the shape of the distribution. The **generalisation to multiple variables** is called a **Dirichlet distribution**. 
-  ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/dirichlet_distributions.png)
-  ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/lda.png)
-  ![Topic_model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/topic_model.png)
+  ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/dirichlet_distributions.png)
+  ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/lda.png)
+  ![Topic_model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/topic_model.png)
