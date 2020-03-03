@@ -110,6 +110,8 @@
 - **TF-IDF** (term frequency - inverse document frequency): *tfidf(t, d, D) = tf(t, d) x idf(t, D)*. TF-IDF is an innovative approach to assigning weights to words that signify their relevance in the document.
   - Term frequency *tf(t,d)* is the ratio between the raw count of a term, *t*, in a document, *d*, divided by the total number of terms in *d*.
   - Inverse document frequency *idf(t, D)* is the logarithm of the total number of documents in the collection, *D*, divided by the number of documents where *t* is present.
+  - It is a way to score the importance of words (or "terms") in a document based on how frequently they appear across multiple documents.
+  - If a word appears frequently in a document, it's important. Give the word a high score. But if a word appears in many documents, it's not a unique identifier. Give the word a low score. Therefore, common words like `the` and `for`, which appear in many documents, will be scaled down. Words that appear frequently in a single document will be scaled up.
 - **Word embedding** is the collective name for a set of language modelling and feature learning techniques in natural language processing where words or phrases from the vocabulary are mapped to vectors of real numbers.
 - The core idea of **Word2Vec** is that a model, which is able to predict a given word given neighbouring words or vice versa, is likely to capture the contextual meanings of words very well.
   - Neighbouring words: **Continuous Bag of Words**.
