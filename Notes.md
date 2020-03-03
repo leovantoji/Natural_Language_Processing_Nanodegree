@@ -110,6 +110,8 @@
 - **TF-IDF** (term frequency - inverse document frequency): *tfidf(t, d, D) = tf(t, d) x idf(t, D)*. TF-IDF is an innovative approach to assigning weights to words that signify their relevance in the document.
   - Term frequency *tf(t,d)* is the ratio between the raw count of a term, *t*, in a document, *d*, divided by the total number of terms in *d*.
   - Inverse document frequency *idf(t, D)* is the logarithm of the total number of documents in the collection, *D*, divided by the number of documents where *t* is present.
+  - It is a way to score the importance of words (or "terms") in a document based on how frequently they appear across multiple documents.
+  - If a word appears frequently in a document, it's important. Give the word a high score. But if a word appears in many documents, it's not a unique identifier. Give the word a low score. Therefore, common words like `the` and `for`, which appear in many documents, will be scaled down. Words that appear frequently in a single document will be scaled up.
 - **Word embedding** is the collective name for a set of language modelling and feature learning techniques in natural language processing where words or phrases from the vocabulary are mapped to vectors of real numbers.
 - The core idea of **Word2Vec** is that a model, which is able to predict a given word given neighbouring words or vice versa, is likely to capture the contextual meanings of words very well.
   - Neighbouring words: **Continuous Bag of Words**.
@@ -132,6 +134,10 @@
 - An **LDA** model **factors the BoW** model into **2 matrices**:
   - The first matrix indexes **documents by topic**.
   - The other matrix indexes **topics by word**.
+- LDA is used to classify text in a document to a particular topic. It builds a topic per document model and words per topic model, modelled as Dirichlet distributions.
+  - Each document is modelled as a multinomial distribution of topics and each topic is modelled as a multinomial distribution of words.
+  - LDA assumes that the every chunk of text we feed into it will contain words that are somehow related. Therefore choosing the right corpus of data is crucial.
+  - It also assumes documents are produced from a mixture of topics. Those topics then generate words based on their probability distribution.
 - [From Wikipedia](https://en.wikipedia.org/wiki/Beta_distribution). In probability theory and statistics, the **beta distribution** is a family of continuous probability distributions defined on the interval *\[0, 1\]* parametrised by two **positive shape parametres**, denoted by *α* and *β*, that appear as exponents of the random variable and control the shape of the distribution. The **generalisation to multiple variables** is called a **Dirichlet distribution**. 
   ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/dirichlet_distributions.png)
   ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/lda.png)
