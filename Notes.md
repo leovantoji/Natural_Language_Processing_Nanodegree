@@ -142,3 +142,14 @@
   ![Dirichlet_distributions](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/dirichlet_distributions.png)
   ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/lda.png)
   ![Topic_model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/topic_model.png)
+
+## Extracurricular
+### Hyperparameters
+- There are generally two types of hyperparameters:
+  - Optimiser hyperparameters which are related to the optimisation and training process than to the model itself. These include learning rate, mini-batch size, and the number of training iterations or epochs.
+  - Model hyperparameters which are involved in the structure of the model. These include the number of layers or model specific parameters for architecture.
+- The **learning rate** is the single most important hyperparameter.
+  ![learning_rate](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/learning_rate.png)
+- If the **mini-batch size** variable is too small, the training might be too slow. If the **mini-batch size** is too large, it could be computationally taxing (i.e. needs more memory) and could result in worse accuracy. Generally, 32, 64, 128, and 256 are potentially good starting values.
+- The **number of training iterations** is a hyperparameter we can optimise automatically using a technique called **early stopping** (also "early termination").
+- RNN Hyperparameters: cell structure like LSTM and GRU should both be tried in the task and compare. 
