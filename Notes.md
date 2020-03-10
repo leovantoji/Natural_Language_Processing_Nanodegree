@@ -143,6 +143,18 @@
   ![LDA](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/lda.png)
   ![Topic_model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/topic_model.png)
 
+## Sequence to Sequence
+- [Keras blog](https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html): **Sequence-to-Sequence (seq2seq)** learning is about training models to convert sequences from one domain (e.g. sentences in English) to sequences in another domain (e.g. the same sentences translated to French). For example: `the cat sat on the mat` → seq2seq → `le chat etait assis sur le tapis`.
+  ![seq2seq](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq.png)
+- **Applications** of seq2seq: Machine translation, question-answer, news-summary, captioning text, etc.
+  ![captioning_text](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/captioning_text.png)
+- **Seq2Seq Architecture**:
+  - The inference process is done by handling inputs to the encoder.
+  - The encoder summarises the inputs into a context variable or state.
+  - The decoder proceeds to take the context and generate the output sequence.
+  ![seq2seq_architecture](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_architecture.png)
+  ![seq2seq_architecture_in_depth](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_architecture_in_depth.png)
+
 ## Extracurricular
 ### Hyperparameters
 - There are generally two types of hyperparameters:
