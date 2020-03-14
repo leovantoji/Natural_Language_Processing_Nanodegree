@@ -154,6 +154,43 @@
   - The decoder proceeds to take the context and generate the output sequence.
   ![seq2seq_architecture](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_architecture.png)
   ![seq2seq_architecture_in_depth](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_architecture_in_depth.png)
+- A seq2seq model works by **feeding one element of the input sequence at a time to the encoder**.
+
+## Deep Learning Attention
+- [LiLianWeng's github](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html) Attention can be broadly interpreted as a vector of importance weights. In order to predict one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with other elements and take the sum of their values weighted by the attention vector as the approximation of the target.
+- Limitation of seq2seq models which can be solved using attention methods:
+  - The **fixed size of the context matrix** passed from the encoder to the decoder is a **bottleneck**.
+  - **Difficulty of encoding long sequences** and **recalling long-term dependancies**.
+- The **size of the context matrix** in an attention seq2seq model depends on the **length of the inpput sequence**.
+- Seq2Seq **without Attention**:
+![seq2seq_wo_attention](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_wo_attention.png)
+- Seq2Seq **with Attention**:
+  ![seq2seq_w_attention](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/seq2seq_w_attention.png)
+- Every time step in the decoder requires calculating an attention vector in a seq2seq model with attention.
+- **Attention Encoder**:
+  ![attention_encoder_unrolled_view](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/attention_encoder_unrolled_view.png)
+- **Attention Decoder**:
+  ![attention_decoder_unrolled_view](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/attention_decoder_unrolled_view.png)
+- **Context Vector Generation**:
+  ![attention_context_vector_generation](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/attention_context_vector_generation.png)
+- **Additive attention** (Bahdanau et al., 2015) uses a one-hidden layer feed-forward network to calculate the attention alignment where **v<sub>a</sub>** and **W<sub>a</sub>** are learned attention parameters. Analogously, we can also use matrices **W<sub>1</sub>** and **W<sub>2</sub>** to learn separate transformations for **h<sub>i</sub>** and **s<sub>j</sub>** respectively, which are then summed:
+  ![additive_attention_formula1](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/additive_attention_formula1.png)
+  ![additive_attention_formula2](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/additive_attention_formula2.png)
+- **Multiplicative attention** (Luong et al., 2015) simplifies the attention operation by calculating the following function:
+  ![multiplicative_attention_formula](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/multiplicative_attention_formula.png)
+  ![multiplicative_attention_detail1](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/multiplicative_attention_detail1.png)
+  ![multiplicative_attention_detail2](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/multiplicative_attention_detail2.png)
+- The **intuition behind using dot product** as a scoring method is that the dot product of two vectors  in word-embedding space is a **measure of the similartiy** between them.
+- The simplicity of **not having a weight vector** in multiplicative attention comes the drawback of assuming the encoder and decoder have the same embedding space. Thus, this might work for text summarisation where both the encoder and decoder use the same language and the same embedding space. For machine translation, since each language tends to have its own embedding space, we might want to use a second scoring method.
+  ![multiplicative_attention_detail3](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/multiplicative_attention_detail3.png)
+- Full view of multiplicative attention decoding phase:
+  ![multiplicative_attention_decoding](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/multiplicative_attention_decoding.png)
+- Computer Vision applications:
+  ![cv_attention_application](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/cv_attention_application.png)
+  ![cv_attention_application2](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/cv_attention_application2.png)
+- **Self-attention**: Without any additional information, however, we can still extract relevant aspects from the sentence by allowing it to attend to itself using self-attention (Lin et al., 2017)
+- The **Transformer**:
+  ![transformer](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/transformer.png)
 
 ## Extracurricular
 ### Hyperparameters
