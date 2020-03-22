@@ -192,6 +192,13 @@
 - The **Transformer**:
   ![transformer](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/transformer.png)
 
+## Introduction to Voice User Interfaces (VUI)
+- **VUI pipeline** includes:
+  - Speech recognition: Voice to text.
+    - Acoustic Model → Language Model → Accent Model
+  - Text to text: Text input reasoned to text output.
+  - Text to speech.
+
 ## Extracurricular
 ### Hyperparameters
 - There are generally two types of hyperparameters:
