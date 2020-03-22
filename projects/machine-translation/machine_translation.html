@@ -13244,14 +13244,14 @@ device_type: &#34;CPU&#34;
 memory_limit: 268435456
 locality {
 }
-incarnation: 6273768113213082813
+incarnation: 11130985716984216142
 , name: &#34;/gpu:0&#34;
 device_type: &#34;GPU&#34;
-memory_limit: 357236736
+memory_limit: 357302272
 locality {
   bus_id: 1
 }
-incarnation: 4294515822330843655
+incarnation: 13630989628875700755
 physical_device_desc: &#34;device: 0, name: Tesla K80, pci bus id: 0000:00:04.0&#34;
 ]
 </pre>
@@ -14608,7 +14608,7 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">model_final</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">output_sequence_length</span><span class="p">,</span> <span class="n">english_vocab_size</span><span class="p">,</span> <span class="n">french_vocab_size</span><span class="p">):</span>
@@ -14624,20 +14624,18 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
     <span class="c1"># model architecture        </span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">english_vocab_size</span><span class="p">,</span> 
-                        <span class="n">output_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> 
+                        <span class="n">output_dim</span><span class="o">=</span><span class="n">english_vocab_size</span><span class="p">,</span> 
                         <span class="n">input_length</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
                         <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
     <span class="c1"># encoder</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">GRU</span><span class="p">(</span><span class="n">output_sequence_length</span><span class="o">*</span><span class="mi">10</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">RepeatVector</span><span class="p">(</span><span class="n">output_sequence_length</span><span class="p">))</span>
     
     <span class="c1"># decoder</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">GRU</span><span class="p">(</span><span class="n">output_sequence_length</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">french_vocab_size</span><span class="o">*</span><span class="mi">10</span><span class="p">)))</span>    
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">french_vocab_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)))</span>
-
-    <span class="c1"># decoder with attention</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">AttentionDecoder</span><span class="p">(</span><span class="n">french_vocab_size</span><span class="p">,</span> <span class="n">output_sequence_length</span><span class="p">))</span>
     
     <span class="c1"># compile model</span>
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1e-3</span>
@@ -14649,19 +14647,7 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
     <span class="k">return</span> <span class="n">model</span>
 
 <span class="n">tests</span><span class="o">.</span><span class="n">test_model_final</span><span class="p">(</span><span class="n">model_final</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final Model Loaded&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final Model Loaded&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14696,7 +14682,7 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">final_predictions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_tk</span><span class="p">,</span> <span class="n">y_tk</span><span class="p">):</span>
@@ -14715,9 +14701,9 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
         <span class="nb">len</span><span class="p">(</span><span class="n">y_tk</span><span class="o">.</span><span class="n">word_index</span><span class="p">)</span>
     <span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
     
-    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
     
     <span class="c1">## DON&#39;T EDIT ANYTHING BELOW THIS LINE</span>
     <span class="n">y_id_to_word</span> <span class="o">=</span> <span class="p">{</span><span class="n">value</span><span class="p">:</span> <span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">y_tk</span><span class="o">.</span><span class="n">word_index</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
@@ -14757,49 +14743,70 @@ new jersey est parfois calme pendant l&#39; automne , et il est neigeux en avril
 <pre>_________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-embedding_6 (Embedding)      (None, 15, 256)           50944     
+embedding_21 (Embedding)     (None, 15, 199)           39601     
 _________________________________________________________________
-bidirectional_37 (Bidirectio (None, 512)               1050624   
+bidirectional_39 (Bidirectio (None, 420)               516600    
 _________________________________________________________________
-repeat_vector_19 (RepeatVect (None, 21, 512)           0         
+repeat_vector_20 (RepeatVect (None, 21, 420)           0         
 _________________________________________________________________
-bidirectional_38 (Bidirectio (None, 21, 1024)          4198400   
+bidirectional_40 (Bidirectio (None, 21, 420)           795060    
 _________________________________________________________________
-dropout_22 (Dropout)         (None, 21, 1024)          0         
+dropout_20 (Dropout)         (None, 21, 420)           0         
 _________________________________________________________________
-time_distributed_26 (TimeDis (None, 21, 344)           352600    
+time_distributed_39 (TimeDis (None, 21, 3440)          1448240   
+_________________________________________________________________
+time_distributed_40 (TimeDis (None, 21, 344)           1183704   
 =================================================================
-Total params: 5,652,568
-Trainable params: 5,652,568
+Total params: 3,983,205
+Trainable params: 3,983,205
 Non-trainable params: 0
 _________________________________________________________________
-None
 Train on 110288 samples, validate on 27573 samples
-Epoch 1/10
-110288/110288 [==============================] - 84s 763us/step - loss: 2.5244 - acc: 0.4760 - val_loss: nan - val_acc: 0.5212
-Epoch 2/10
-110288/110288 [==============================] - 81s 737us/step - loss: 1.6347 - acc: 0.5685 - val_loss: nan - val_acc: 0.6322
-Epoch 3/10
-110288/110288 [==============================] - 81s 736us/step - loss: 1.2342 - acc: 0.6557 - val_loss: nan - val_acc: 0.7198
-Epoch 4/10
-110288/110288 [==============================] - 81s 736us/step - loss: 0.9602 - acc: 0.7226 - val_loss: nan - val_acc: 0.7155
-Epoch 5/10
-110288/110288 [==============================] - 81s 736us/step - loss: 0.7801 - acc: 0.7677 - val_loss: nan - val_acc: 0.8163
-Epoch 6/10
-110288/110288 [==============================] - 81s 736us/step - loss: 0.6001 - acc: 0.8175 - val_loss: nan - val_acc: 0.8660
-Epoch 7/10
-110288/110288 [==============================] - 81s 736us/step - loss: 0.4545 - acc: 0.8623 - val_loss: nan - val_acc: 0.8976
-Epoch 8/10
-110288/110288 [==============================] - 81s 735us/step - loss: 0.3566 - acc: 0.8928 - val_loss: nan - val_acc: 0.9196
-Epoch 9/10
-110288/110288 [==============================] - 81s 735us/step - loss: 0.2855 - acc: 0.9142 - val_loss: nan - val_acc: 0.9390
-Epoch 10/10
-110288/110288 [==============================] - 81s 735us/step - loss: 0.2407 - acc: 0.9279 - val_loss: nan - val_acc: 0.9369
+Epoch 1/20
+110288/110288 [==============================] - 58s 525us/step - loss: 2.4896 - acc: 0.4680 - val_loss: nan - val_acc: 0.5421
+Epoch 2/20
+110288/110288 [==============================] - 55s 498us/step - loss: 1.6864 - acc: 0.5647 - val_loss: nan - val_acc: 0.6377
+Epoch 3/20
+110288/110288 [==============================] - 55s 499us/step - loss: 1.2655 - acc: 0.6483 - val_loss: nan - val_acc: 0.7081
+Epoch 4/20
+110288/110288 [==============================] - 55s 499us/step - loss: 1.0388 - acc: 0.6995 - val_loss: nan - val_acc: 0.7398
+Epoch 5/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.8711 - acc: 0.7387 - val_loss: nan - val_acc: 0.7902
+Epoch 6/20
+110288/110288 [==============================] - 55s 500us/step - loss: 0.7150 - acc: 0.7801 - val_loss: nan - val_acc: 0.8354
+Epoch 7/20
+110288/110288 [==============================] - 55s 500us/step - loss: 0.5781 - acc: 0.8193 - val_loss: nan - val_acc: 0.8768
+Epoch 8/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.4654 - acc: 0.8551 - val_loss: nan - val_acc: 0.8941
+Epoch 9/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.3948 - acc: 0.8770 - val_loss: nan - val_acc: 0.9100
+Epoch 10/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.3445 - acc: 0.8928 - val_loss: nan - val_acc: 0.9213
+Epoch 11/20
+110288/110288 [==============================] - 55s 500us/step - loss: 0.3038 - acc: 0.9059 - val_loss: nan - val_acc: 0.9296
+Epoch 12/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.2718 - acc: 0.9164 - val_loss: nan - val_acc: 0.9349
+Epoch 13/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.2468 - acc: 0.9248 - val_loss: nan - val_acc: 0.9433
+Epoch 14/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.2220 - acc: 0.9326 - val_loss: nan - val_acc: 0.9460
+Epoch 15/20
+110288/110288 [==============================] - 55s 500us/step - loss: 0.2082 - acc: 0.9368 - val_loss: nan - val_acc: 0.9499
+Epoch 16/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.1910 - acc: 0.9422 - val_loss: nan - val_acc: 0.9569
+Epoch 17/20
+110288/110288 [==============================] - 55s 498us/step - loss: 0.1771 - acc: 0.9467 - val_loss: nan - val_acc: 0.9585
+Epoch 18/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.1689 - acc: 0.9491 - val_loss: nan - val_acc: 0.9616
+Epoch 19/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.1571 - acc: 0.9529 - val_loss: nan - val_acc: 0.9631
+Epoch 20/20
+110288/110288 [==============================] - 55s 499us/step - loss: 0.1469 - acc: 0.9562 - val_loss: nan - val_acc: 0.9653
 Sample 1:
 il a vu un vieux camion jaune &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt;
 Il a vu un vieux camion jaune
 Sample 2:
-new jersey est parfois calme au cours de l&#39; automne et il est neigeux en avril &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt;
+new jersey est parfois calme pendant l&#39; automne et est est neigeux en &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt;
 new jersey est parfois calme pendant l&#39; automne et il est neigeux en avril &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt; &lt;PAD&gt;
 </pre>
 </div>
@@ -14854,7 +14861,7 @@ $ python -m nbconvert machine_translation.ipynb</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save before you run this cell!</span>
@@ -14862,27 +14869,6 @@ $ python -m nbconvert machine_translation.ipynb</code></pre>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;[NbConvertApp] Converting notebook machine_translation.ipynb to html&#39;,
- &#39;[NbConvertApp] Writing 305996 bytes to machine_translation.html&#39;]</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
