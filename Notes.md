@@ -125,7 +125,7 @@
 - **t-SNE** (t-Distributed Stochastic Neighbouring Embedding) is a **dimensionality reduction technique** that can map high dimensional vectors to a lower dimensional space.
 
 ## Topic Modelling
-- **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation (LDA)** is an example of topic model and is used to classify text in a document to a particular topic.
+- **Topic modelling** is a type of statistical modelling for discovering the abstract topics that occur in a collection of documents. **Latent Dirichlet Allocation (LDA)** is an example of topic model and is used to classify text in a document to a particular topic. [From MonkeyLearn](https://monkeylearn.com/blog/introduction-to-topic-modeling/)
 - In statistics, **latent variables** (hidden variables) are variables that are **not directly observed** but are rather **inferred from other observed variables**. 
   - *BoW model* without latent variables has 500K parameters.
   ![Bag_of_Words](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/bag-of-words-quiz.png)
