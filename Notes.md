@@ -192,12 +192,26 @@
 - The **Transformer**:
   ![transformer](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/transformer.png)
 
-## Introduction to Voice User Interfaces (VUI)
+## Speech Recognition
 - **VUI pipeline** includes:
   - Speech recognition: Voice to text.
     - Acoustic Model → Language Model → Accent Model
   - Text to text: Text input reasoned to text output.
   - Text to speech.
+- **Automatic Speech Recognition (ASR)**: The goal is to input any continuous audio speech and output the text equivalent. ASR should be **speaker independent** and have **high accuracy**.
+- **Models in speech recognition** can be divided into acoustic models and language models.
+  - The **acoustic model** solves the problem of **turning sound signals** into some kind of **phonetic representation**.
+  - The **language model** houses the **domain knowledge of words, grammar and sentence structure** for the language.
+- The **challenges of ASR** are: 
+  - Noises.
+  ![noise](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_noise.png)
+  - Variability in pitch, volume and speed.
+  ![asr_challenge_variability](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_variability.png)
+  ![asr_challenge_word_speed](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_word_speed.png)
+  - Ambiguity specific to languages.
+  ![asr_challenge_language_knowledge](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_language_knowledge.png)
+  ![asr_challenge_spoken_vs_written](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_spoken_vs_written.png)  
+- **Signal analysis**
 
 ## Extracurricular
 ### Hyperparameters
