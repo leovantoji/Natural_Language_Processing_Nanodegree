@@ -229,9 +229,51 @@
   - Take the *log* and we can just add the source and filter instead of multiplying: log|*S(w)*| = log|*E(w)*| + log|*H(w)*|
   - By taking the **inverse discrete Fourier transform (IDFT)**, the signal can be split. This is the cepstrum *c(n)*: *c(n)* = IDFT(log|*S(w)*|) = IDFT(log|*E(w)*| + log|*H(w)*|)
   - Because we are splitting the logs of the frequencies, this is not the same as the original time domain, but rather now called the **quefrency** or **ceptral** domain. The vocal tract, or filter components, can be extracted now because they vary slowly and are concentrated in the lower quefrency region.
-- **Mel Frequency Cepstrum Coefficient (MFCC)** analysis is the **reduction of an audio signal** to **essential speech component features** using both mel frequency analysis and cepstral analysis. The **range of frequencies** are **reduced** and **binned into groups of frequencies** that humans can distinguish. The signal is further **separated into source and filter** so that variations between speakers unrelated to articulation can be filtered away. 
+- **Mel Frequency Cepstrum Coefficient (MFCC)** analysis is the **reduction of an audio signal** to **essential speech component features** using both mel frequency analysis and cepstral analysis. The **range of frequencies** are **reduced** and **binned into groups of frequencies** that humans can distinguish. The signal is further **separated into source and filter** so that variations between speakers unrelated to articulation can be filtered away. [MORE ABOUT THIS](http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/#steps-at-a-glance)
   ![mfcc](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/mfcc.png)  
 - **Changes in frequencies, deltas** and **changes in changes in frequencies, delta-deltas** might also be **meaningful features** in speech recognition.
+- MFCC demo:
+  ```python
+  from python_speech_features import mfcc
+  import scipy.io.wavfile as wav
+  
+  def wav_to_mfcc(wav_filename, num_cepstrum):
+    """extract MFCC features from a wav file.
+    Parameters:
+    - wav_filename: filename with .wav extension.
+    - num_cepstrum: number of cepstrum to return.
+    
+    Returns:
+    - MFCC features for wav file.
+    """
+    
+    # read .wav file
+    (rate, signal_data) = wav.read(wav_filename)
+    
+    # extract mfcc features
+    mfcc_features = mfcc(signal_data, rate, numcep=num_cepstrum)
+    
+    return mfcc_features
+  ```
+- **Phonetics** is a branch of linguistics for the **study of sounds of human speech**: physical properties, production, acoustics, articulation, etc.
+- In any given language, a **phoneme** is the **smallest sound segment** that can be used to distinguish one word from another. For example, *bat* and *chat* have only one sound different but this changes the word. The phonemes in question are *B* and *CH*. What exactly these are and how many exist varies a bit and may be influenced by accents included. Generally, US English consists of 39 to 44 phonemes.
+- A **grapheme** is the **smallest symbol** that distinguishes one written word from another. In US English, 26 letters and a space combine for 27 possible graphemes.
+- A **lexicon** for speech recognition is a **lookup file** for converting speech parts to words. An example of this is **cmudict**, the Carnegie Mellon tool for speech recognition compatible with the open source **Sphinx** project. 
+  ```
+  AARDVARK AA R D V AA R K
+  AARON EH R AH N
+  AARON'S EH R AH N Z
+  AARONSON EH R AH N S AH N
+  ```
+- **ARPAbet** is a set of phonemes developed by the Advanced Research Projects Agency (ARPA) for the Speech Understanding Project in the 1970s.
+  
+  |Phoneme|Example|Translation|
+  |:-:|:-:|:-:|
+  |AA|odd|AA D|
+  |AE|at|AE T|
+  |AH|hut|HH AH T|
+  |ZH|seizure|S IY ZH ER|
+- A **pangram** is a sentence using every letter of a given alphabet at least once.
 
 ## Extracurricular
 ### Hyperparameters
