@@ -211,7 +211,27 @@
   - Ambiguity specific to languages.
   ![asr_challenge_language_knowledge](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_language_knowledge.png)
   ![asr_challenge_spoken_vs_written](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/asr_challenge_spoken_vs_written.png)  
-- **Signal analysis**
+- **Signal analysis** refers to the audio signal produced by speech. Sound vibrations cause pressure waves in the air that can be detected with a microphone and transduced into a signal. Sinusoidal vibrations are created in the air when we speak. Higher pitches vibrate faster with a higher frequency than lower pitches.
+  ![soundwave_to_audio](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/soundwave_to_audio.png)
+- **Fourier analysis** is the study **decomposing mathematical functions** into sums of simpler trigonometric functions. Since sound comprises oscillating vibrations, we can use Fourier analysis and Fourier transforms to decompose an audio signal into component sinusoidal functions at varying frequencies. [More about Fourier Analysis](https://ibmathsresources.com/2014/08/14/fourier-transforms-the-most-important-tool-in-mathematics/).
+- Our speech is made up of many frequencies at the same time. The signal is a sum of all the **component frequencies** stuck together. Component frequencies should be used as features. **Fast Fourier Transform (FFT)** is often used to break the signal into component frequencies.
+  ![signal_component_freq](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/signal_component_freq.png)
+  ![freq_comp](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/freq_comp.png)
+- FFT can be used to create a **spectrogram** of an audio signal. A **spectrogram** is a **visual representation of the spectrum of frequencies of a signal** as it varies with time. Spectrograms are sometimes referred as **sonographs, voiceprints, or voicegrams** when applied to an audio signal. The **intensity of shading** indicates the **amplitude of the signal**.
+  ![spectrogram](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/spectrogram.png)
+- The **Mel Scale** was developed in 1937 and is based on human studies of pitch perception. At lower pitches (frequencies), humans can distinguish pitches better. 
+  ![mel-scale](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/mel-scale.png)
+- The **source/filter** model holds that the **source** of voices speech is dependent upon the **vibrations initiated in the vocal box**, and is unique to the speaker, while the **filter** is the **articulation of the words** in the forward part of the voice tract. The two can be separated through **Cepstrum analysis**.
+  ![source-filter-model](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/source-filter-model.png)  
+- The **source/filter** model motivates **Cepstral analysis**. 
+  - The intuition is that the **source** *e(n)* is multiplied by the **filter** *h(n)* to form the signal *s(n)*: *s(n) = e(n) x h(n)*
+  - This signal can be converted to the frequency domain through a discrete Fourier transform (DFT) (FFT can also be used): |*S(w)*| = |*E(w)*| ⋅ |*H(w)*|
+  - Take the *log* and we can just add the source and filter instead of multiplying: log|*S(w)*| = log|*E(w)*| + log|*H(w)*|
+  - By taking the **inverse discrete Fourier transform (IDFT)**, the signal can be split. This is the cepstrum *c(n)*: *c(n)* = IDFT(log|*S(w)*|) = IDFT(log|*E(w)*| + log|*H(w)*|)
+  - Because we are splitting the logs of the frequencies, this is not the same as the original time domain, but rather now called the **quefrency** or **ceptral** domain. The vocal tract, or filter components, can be extracted now because they vary slowly and are concentrated in the lower quefrency region.
+- **Mel Frequency Cepstrum Coefficient (MFCC)** analysis is the **reduction of an audio signal** to **essential speech component features** using both mel frequency analysis and cepstral analysis. The **range of frequencies** are **reduced** and **binned into groups of frequencies** that humans can distinguish. The signal is further **separated into source and filter** so that variations between speakers unrelated to articulation can be filtered away. 
+  ![mfcc](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/mfcc.png)  
+- **Changes in frequencies, deltas** and **changes in changes in frequencies, delta-deltas** might also be **meaningful features** in speech recognition.
 
 ## Extracurricular
 ### Hyperparameters
