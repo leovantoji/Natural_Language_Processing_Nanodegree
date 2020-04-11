@@ -230,7 +230,7 @@
   - By taking the **inverse discrete Fourier transform (IDFT)**, the signal can be split. This is the cepstrum *c(n)*: *c(n)* = IDFT(log|*S(w)*|) = IDFT(log|*E(w)*| + log|*H(w)*|)
   - Because we are splitting the logs of the frequencies, this is not the same as the original time domain, but rather now called the **quefrency** or **ceptral** domain. The vocal tract, or filter components, can be extracted now because they vary slowly and are concentrated in the lower quefrency region.
 - **Mel Frequency Cepstrum Coefficient (MFCC)** analysis is the **reduction of an audio signal** to **essential speech component features** using both mel frequency analysis and cepstral analysis. The **range of frequencies** are **reduced** and **binned into groups of frequencies** that humans can distinguish. The signal is further **separated into source and filter** so that variations between speakers unrelated to articulation can be filtered away. [MORE ABOUT THIS](http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/#steps-at-a-glance)
-  ![mfcc](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/mfcc.png)  
+  ![mfcc](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/mfcc.png)
 - **Changes in frequencies, deltas** and **changes in changes in frequencies, delta-deltas** might also be **meaningful features** in speech recognition.
 - MFCC demo:
   ```python
@@ -274,6 +274,18 @@
   |AH|hut|HH AH T|
   |ZH|seizure|S IY ZH ER|
 - A **pangram** is a sentence using every letter of a given alphabet at least once.
+- Hidden Markov Models are the primary probabilistic model in traditional ASR systems. 
+- An **N-grams** is an ordered sequence of words.
+  ![ngrams-numbers](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/ngrams-numbers.png)
+- Probability of a series of words can be calculated from the chained probabilities of its history: 
+  ![eqn-jointprob-words-in-sentence](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/eqn-jointprob-words-in-sentence.png)
+- The probabilities of sequence occurences in a large textual corpus can be calculated this way and used as a language model to add grammar and contextual knowledge to a speech recognition system. However, there is a prohibitively large number of calculations for all the possible sequences of varying length in a large textual corpus. Therefore, to address this problem, we use the Markov Assumption to approximate a sequence probability with a shorter sequence:
+  ![eqn-markov-assumption-ngrams](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/eqn-markov-assumption-ngrams.png)
+- Some possible combinations may not exist in our probability dictionary but are still possible. We don't want to multiply in a probability of 0 just because our original corpus was deficient. This is solved through **smoothing**. A simple method is the **Laplace smoothing** with the **add-one** estimate where *V* is the size of the vocabulary for the corpus, i.e. the number of unique tokens.
+  ![eqn-addone-bigram-smoothing](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/images/eqn-addone-bigram-smoothing.png)
+- **Repeated multiplications of small probabilities** can cause **underflow problems** in computers when the values become too small. Therefore, we will calculate all probabilities in log space:
+  *log(p<sub>1</sub> x p<sub>2</sub> x p<sub>3</sub> x p<sub>4</sub>) = log(p<sub>1</sub>) + log(p<sub>2</sub>) + log(p<sub>3</sub>) + log(p<sub>4</sub>)*
+- **Connectionist Temporal Classification (CTC)** is a loss function useful for performing supervised learning on sequence data, without needing an alignment between input data and labels.
 
 ## Extracurricular
 ### Hyperparameters
