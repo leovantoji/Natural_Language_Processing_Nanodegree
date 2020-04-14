@@ -1,6 +1,6 @@
 # Udacity Natural Language Processing Nanodegree
 
-![Certificate](place_holder.png)
+![Certificate](https://github.com/leovantoji/Natural_Language_Processing_Nanodegree/blob/master/certificate/Natural%20Language%20Processing%20Udacity%20Nanodegree.png)
 
 ## Overview
 |Official Duration|Projects|
